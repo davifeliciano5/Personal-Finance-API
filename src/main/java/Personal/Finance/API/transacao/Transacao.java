@@ -2,7 +2,7 @@ package Personal.Finance.API.transacao;
 
 
 import Personal.Finance.API.categoria.Categoria;
-import Personal.Finance.API.usuarios.Usuarios;
+import Personal.Finance.API.usuarios.entity.Usuarios;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;

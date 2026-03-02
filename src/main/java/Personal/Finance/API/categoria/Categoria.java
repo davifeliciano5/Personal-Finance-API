@@ -1,7 +1,7 @@
 package Personal.Finance.API.categoria;
 
 
-import Personal.Finance.API.usuarios.Usuarios;
+import Personal.Finance.API.usuarios.entity.Usuarios;
 import jakarta.persistence.*;
 
 @Entity

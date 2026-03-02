@@ -1,14 +1,18 @@
-package Personal.Finance.API.usuarios;
+package Personal.Finance.API.usuarios.entity;
 
 import Personal.Finance.API.categoria.Categoria;
 import Personal.Finance.API.transacao.Transacao;
 import jakarta.persistence.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.Collection;
 import java.util.List;
 
 @Entity
 @Table
-public class Usuarios {
+public class Usuarios implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,12 +24,16 @@ public class Usuarios {
 
     private String password;
 
+    private UsuarioRole role;
 
     @OneToMany(mappedBy = "categoria_usuario")
     private List<Categoria> categoria;
 
     @OneToMany(mappedBy = "usuario")
     private List<Transacao> transacao;
+
+    public Usuarios(String email, String encriptedPassword, UsuarioRole usuarioRole) {
+    }
 
     public Long getId_usuario() {
         return id_usuario;
@@ -51,8 +59,19 @@ public class Usuarios {
         this.email = email;
     }
 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        if(this.role == UsuarioRole.ADMIN) return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"), new SimpleGrantedAuthority("ROLE_USER"));
+        else return List.of(new SimpleGrantedAuthority("ROLE_USER"));
+    }
+
     public String getPassword() {
         return password;
+    }
+
+    @Override
+    public String getUsername() {
+        return "";
     }
 
     public void setPassword(String password) {
