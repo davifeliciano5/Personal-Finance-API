@@ -9,8 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import java.io.IOException;
+
+@Component
 public class FiltroJWT extends OncePerRequestFilter {
 
 
@@ -21,11 +25,11 @@ public class FiltroJWT extends OncePerRequestFilter {
     UsuarioRepository userRepository;
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException, IOException {
         var token = this.recoverToken(request);
         if(token !=null){
             var login = tokenService.validateToken(token);
-            UserDetails user = userRepository.findByLogin(login);
+            UserDetails user = userRepository.findByEmail(login);
             if (user == null) {
                 System.out.println("USUÁRIO NÃO ENCONTRADO NO BANCO");
             } else {

@@ -1,6 +1,6 @@
-CREATE TABLE usuarios(
-    id_usuario SERIAL PRIMARY KEY,
-    name TEXT NOT NULL,
-    email TEXT  UNIQUE NOT NULL CHECK (email <> ''),
-    password TEXT NOT NULL
+CREATE TABLE usuarios (
+    id_usuario BIGINT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL
 );

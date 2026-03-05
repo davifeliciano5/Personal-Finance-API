@@ -23,7 +23,7 @@ public class TokenService {
     public String generateToken(Usuarios user){
         try{
             Algorithm algorithm = Algorithm.HMAC256(secret);
-            String token = JWT.create().withIssuer("tenant").withSubject(user.getEmail())
+            String token = JWT.create().withIssuer("tenant").withSubject(user.getUsername())
                     .withExpiresAt(gerenateExpirantionDate()).sign(algorithm);
             return token;
 

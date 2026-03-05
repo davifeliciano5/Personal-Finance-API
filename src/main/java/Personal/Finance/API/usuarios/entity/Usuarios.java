@@ -64,6 +64,8 @@ public class Usuarios implements UserDetails {
         if(this.role == UsuarioRole.ADMIN) return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"), new SimpleGrantedAuthority("ROLE_USER"));
         else return List.of(new SimpleGrantedAuthority("ROLE_USER"));
     }
+    public Usuarios() {
+    }
 
     public String getPassword() {
         return password;
@@ -71,7 +73,7 @@ public class Usuarios implements UserDetails {
 
     @Override
     public String getUsername() {
-        return "";
+        return this.email;
     }
 
     public void setPassword(String password) {
