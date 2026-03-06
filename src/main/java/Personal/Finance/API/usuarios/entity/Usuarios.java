@@ -1,6 +1,6 @@
 package Personal.Finance.API.usuarios.entity;
 
-import Personal.Finance.API.categoria.Categoria;
+import Personal.Finance.API.categoria.entity.Categoria;
 import Personal.Finance.API.transacao.Transacao;
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;

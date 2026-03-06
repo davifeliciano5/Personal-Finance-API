@@ -1,7 +1,7 @@
 package Personal.Finance.API.transacao;
 
 
-import Personal.Finance.API.categoria.Categoria;
+import Personal.Finance.API.categoria.entity.Categoria;
 import Personal.Finance.API.usuarios.entity.Usuarios;
 import jakarta.persistence.*;
 
