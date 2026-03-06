@@ -23,7 +23,7 @@ public class Usuarios implements UserDetails {
     private String email;
 
     private String password;
-
+    @Enumerated(EnumType.STRING)
     private UsuarioRole role;
 
     @OneToMany(mappedBy = "categoria_usuario")
@@ -32,7 +32,11 @@ public class Usuarios implements UserDetails {
     @OneToMany(mappedBy = "usuario")
     private List<Transacao> transacao;
 
-    public Usuarios(String email, String encriptedPassword, UsuarioRole usuarioRole) {
+
+    public Usuarios(String email, String password, UsuarioRole role) {
+        this.email = email;
+        this.password = password;
+        this.role = role;
     }
 
     public Long getId_usuario() {
