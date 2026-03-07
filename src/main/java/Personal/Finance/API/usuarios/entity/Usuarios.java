@@ -33,11 +33,14 @@ public class Usuarios implements UserDetails {
     private List<Transacao> transacao;
 
 
-    public Usuarios(String email, String password, UsuarioRole role) {
+    public Usuarios(String email,String nome,String password, UsuarioRole role) {
         this.email = email;
+        this.nome = nome;
         this.password = password;
         this.role = role;
     }
+
+
 
     public Long getId_usuario() {
         return id_usuario;

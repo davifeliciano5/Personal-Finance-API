@@ -31,7 +31,11 @@ public class ConfiguracaoSeguranca {
                         authorize
                                 .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
                                 .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
-                                .requestMatchers(HttpMethod.POST,"/teste").hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.POST, "/categorias/**").hasRole("USER")
+                                .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
+                                .requestMatchers(HttpMethod.POST, "/teste/**").permitAll()
+                                .requestMatchers(HttpMethod.GET, "/teste/**").permitAll()
+//                                .requestMatchers(HttpMethod.POST,"/teste").hasRole("ADMIN")
                                 .anyRequest().authenticated()
                 )
                 .addFilterBefore(securityFilterJTW, UsernamePasswordAuthenticationFilter.class)
