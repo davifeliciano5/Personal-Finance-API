@@ -31,13 +31,8 @@ public class FiltroJWT extends OncePerRequestFilter {
         if(token != null){
             var login = tokenService.validateToken(token);
             UserDetails user = userRepository.findByEmail(login);
-            Usuarios testeUser = userRepository.findByNome(login);
-            if(testeUser == null){
-                System.out.printf("o teste está vazio");
-            }
-            System.out.printf(user.getUsername());
-            System.out.printf(user.getPassword());
-            System.out.printf(user.getAuthorities().toString());
+
+
             if (user == null) {
                 System.out.println("USUÁRIO NÃO ENCONTRADO NO BANCO");
             } else {

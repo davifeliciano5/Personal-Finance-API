@@ -32,6 +32,7 @@ public class ConfiguracaoSeguranca {
                                 .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
                                 .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
                                 .requestMatchers(HttpMethod.POST, "/categorias/**").hasRole("USER")
+                                .requestMatchers(HttpMethod.POST, "/home/**").hasRole("USER")
                                 .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
                                 .requestMatchers(HttpMethod.POST, "/teste/**").permitAll()
                                 .requestMatchers(HttpMethod.GET, "/teste/**").permitAll()
